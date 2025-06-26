@@ -36,13 +36,15 @@ def train_lstm(ticker_df, ticker, window_size=30):
     model.save(f'models/lstm/{ticker}/model.h5')
     joblib.dump(scaler, f'models/lstm/{ticker}/scaler.pkl')
 
-    return model, scaler
+    
 
 
-from src.evaluation import plot_predictions, evaluate_performance, save_evaluation_report
+    from src.evaluation import plot_predictions, evaluate_performance, save_evaluation_report
 
     # Evaluate and visualize
     y_pred = model.predict(X_test)
     metrics = evaluate_performance(y_test, y_pred)
     save_evaluation_report(metrics, ticker, "lstm")
     plot_predictions(y_test, y_pred, ticker, "lstm")
+
+    return model, scaler

@@ -1,6 +1,6 @@
 from stable_baselines3 import PPO
 from stable_baselines3.common.vec_env import DummyVecEnv
-from rl_environment import TradingEnv
+from src.rl_environment import TradingEnv
 import os
 
 def train_agent(ticker, df):
