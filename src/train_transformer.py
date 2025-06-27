@@ -4,6 +4,8 @@ import tensorflow as tf
 from sklearn.preprocessing import MinMaxScaler
 import joblib
 import os
+from src.evaluation import plot_predictions, evaluate_performance, save_evaluation_report
+
 
 class Time2Vector(tf.keras.layers.Layer):
     def __init__(self, seq_len):
@@ -56,13 +58,14 @@ def train_transformer(ticker_df, ticker, window_size=30):
     model.save(f'models/lstm/{ticker}/transformer_model.h5')
     joblib.dump(scaler, f'models/lstm/{ticker}/scaler_transformer.pkl')
 
-    return model, scaler
-
-
-from src.evaluation import plot_predictions, evaluate_performance, save_evaluation_report
-
+    
     # Evaluate and visualize
     y_pred = model.predict(X_test)
     metrics = evaluate_performance(y_test, y_pred)
     save_evaluation_report(metrics, ticker, "transformer")
     plot_predictions(y_test, y_pred, ticker, "transformer")
+
+    return model, scaler
+
+
+    

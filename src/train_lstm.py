@@ -6,6 +6,7 @@ from tensorflow.keras.layers import LSTM, Dense
 from sklearn.preprocessing import MinMaxScaler
 import joblib
 import os
+from src.evaluation import plot_predictions, evaluate_performance, save_evaluation_report
 
 def build_model(input_shape):
     model = Sequential([
@@ -39,7 +40,7 @@ def train_lstm(ticker_df, ticker, window_size=30):
     
 
 
-    from src.evaluation import plot_predictions, evaluate_performance, save_evaluation_report
+    
 
     # Evaluate and visualize
     y_pred = model.predict(X_test)
