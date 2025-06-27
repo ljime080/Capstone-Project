@@ -1,15 +1,13 @@
-import yfinance as yf
 from src.train_lstm import train_lstm
 from src.train_rl_agent import train_agent
 import pandas as pd
 import os
+from src.utils import download_data
+
 
 tickers = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'NVDA', 'META', 'TSLA', 'BRK-B', 'UNH', 'JPM']
 
-def download_data(ticker, start="2019-01-01"):
-    df = yf.download(ticker, start=start)
-    df.dropna(inplace=True)
-    return df
+
 
 def main():
     for ticker in tickers:
@@ -17,7 +15,7 @@ def main():
         df = download_data(ticker)
         os.makedirs("data/raw", exist_ok=True)
         df.to_csv(f"data/raw/{ticker}.csv")
-
+        df.head()
         # Train LSTM Model
         train_lstm(df, ticker)
 
