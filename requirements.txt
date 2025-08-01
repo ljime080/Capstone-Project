@@ -1,0 +1,9 @@
+streamlit
+alpaca-trade-api
+pandas
+numpy
+yfinance
+gym
+requests
+stable-baselines3
+matplotlib

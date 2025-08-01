@@ -1,0 +1,21 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.pkl
+*.h5
+*.log
+
+# Environment
+.env
+venv/
+.envrc
+
+# Data
+data/*.csv
+*.zip
+backtest_result.png
+
+# Models
+*.zip
+*.pth
+dqn_options_trader*
