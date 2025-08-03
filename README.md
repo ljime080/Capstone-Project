@@ -40,6 +40,11 @@ A Deep Q-Network (DQN) reinforcement learning agent for US stock options trading
 
 ---
 
-## Model results
+## 📈 Model Results
 
 ![Trading App Screenshot](portfolio_value_plot.png)
+
+| Metric          | Value     |
+| --------------- | --------- |
+| 💰 ROI          | **6.25%** |
+| 📊 Sharpe Ratio | **0.14**  |
