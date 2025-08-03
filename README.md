@@ -1,58 +1,45 @@
 # RL Options Trading Bot
 
-This repository contains a Streamlit-based application powered by a Deep Q-Learning (DQN) reinforcement learning agent for trading US stock options using real-time data and paper trading via Alpaca.
+A Deep Q-Network (DQN) reinforcement learning agent for US stock options trading, featuring a custom OpenAI Gym environment, backtesting, and a Streamlit dashboard for monitoring and paper trading.
 
-## 📂 Project Structure
+---
 
-```
-.
-├── app/                     # Streamlit frontend
-│   └── app.py
-├── rl_model/                # Reinforcement learning training and environment
-│   ├── backtest.py
-│   ├── model_utils.py
-│   ├── train_rl_model.py
-│   └── trading_env.py
-├── utils/                   # API connectors and data utilities
-│   ├── alpaca_utils.py
-│   ├── config.py
-│   └── option_data_utils.py
-├── data/                    # (Optional) Local cache or datasets
-├── requirements.txt
-└── README.md
-```
+## 🚀 Running Instructions
 
-## 🧠 Features
+1. **Clone the repository**
+2. **Set your API keys** in `utils/config.py`
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. **Train the RL model**
+   ```bash
+   python rl_model/train_rl_model.py
+   ```
+5. **Run the Streamlit app**
+   ```bash
+   streamlit run app/app.py
+   ```
+6. **If you'd like to see backtest results run the file called "backtest_dynamic_option_chain.ipynb**
 
-- RL model trained on option prices, Greeks, and macroeconomic indicators
-- Streamlit frontend for signal monitoring and paper trading
-- Backtesting script to visualize portfolio growth
-- Alpaca and Tradier API integration
+---
 
-## 🚀 Getting Started
+## 🧠 Model Type
 
-1. Clone the repo
-2. Set your API keys in `utils/config.py`
-3. Install dependencies:
+- **Deep Q-Network (DQN)**
+- Implemented with Stable Baselines3
+- Custom OpenAI Gym environment for options trading
 
-```bash
-pip install -r requirements.txt
-```
+---
 
-4. Train the RL model:
+## 🏆 Reward Function
 
-```bash
-python rl_model/train_rl_model.py
-```
+- **+1** for each successful sell action
+- **0** otherwise  
+  _(See `OptionsTradingEnv.step` in `rl_model/trading_env.py`)_
 
-5. Run the app:
+---
 
-```bash
-streamlit run app/app.py
-```
+## Model results
 
-## 📈 Backtest
-
-```bash
-python rl_model/backtest.py
-```
+![Trading App Screenshot](portfolio_value_plot.png)

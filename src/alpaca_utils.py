@@ -23,3 +23,14 @@ def submit_order(symbol, qty, side, type="market", time_in_force="gtc"):
         type=type,
         time_in_force=time_in_force
     )
+
+
+if __name__ == "__main__":
+    # Example usage
+    symbol = "SPY"
+    data = get_price_data(symbol)
+    print(f"Latest price data for {symbol}:\n{data.tail()}")
+    
+    # Submit a paper order (uncomment to execute)
+    # submit_order(symbol=symbol, qty=1, side="buy")
+    print("Order submission example completed.")
